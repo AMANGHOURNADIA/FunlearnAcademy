@@ -7,10 +7,10 @@ import java.util.List;
 public class Cours {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long coursId;
-    private String coursName;
+    private Long id;
+    private String name;
     private String description;
-    private Double prix;
+    private Double price;
     @ManyToOne
     private Formateur formateur;
     @OneToMany
@@ -19,29 +19,27 @@ public class Cours {
     public Cours() {
     }
 
-
-    public Cours(Long coursId, String coursName, String description, Double prix, List<Section> sections) {
-        this.coursId = coursId;
-        this.coursName = coursName;
+    public Cours(Long id, String name, String description, Double price) {
+        this.id = id;
+        this.name = name;
         this.description = description;
-        this.prix = prix;
-        this.sections = sections;
+        this.price=price;
     }
 
-    public Long getCoursId() {
-        return coursId;
+    public Long getId() {
+        return id;
     }
 
-    public void setCoursId(Long coursId) {
-        this.coursId = coursId;
+    public void setId(Long id) {
+        this.id = id;
     }
 
-    public String getCoursName() {
-        return coursName;
+    public String getName() {
+        return name;
     }
 
-    public void setCoursName(String coursName) {
-        this.coursName = coursName;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getDescription() {
@@ -52,12 +50,20 @@ public class Cours {
         this.description = description;
     }
 
-    public Double getPrix() {
-        return prix;
+    public Double getPrice() {
+        return price;
     }
 
-    public void setPrix(Double prix) {
-        this.prix = prix;
+    public void setPrice(Double price) {
+        this.price = price;
+    }
+
+    public Formateur getFormateur() {
+        return formateur;
+    }
+
+    public void setFormateur(Formateur formateur) {
+        this.formateur = formateur;
     }
 
     public List<Section> getSections() {

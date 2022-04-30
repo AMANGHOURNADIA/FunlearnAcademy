@@ -1,16 +1,35 @@
 package com.example.funlearnacademy.bean;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 public class CategorieItem {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String reference;
     private String name;
+    private String description;
     @ManyToOne
     private Categorie categorie;
+    @OneToMany
+    private List<Sujet> sujet;
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public List<Sujet> getSujet() {
+        return sujet;
+    }
+
+    public void setSujet(List<Sujet> sujet) {
+        this.sujet = sujet;
+    }
 
     public Categorie getCategorie() {
         return categorie;
@@ -28,13 +47,6 @@ public class CategorieItem {
         this.id = id;
     }
 
-    public String getReference() {
-        return reference;
-    }
-
-    public void setReference(String reference) {
-        this.reference = reference;
-    }
 
     public String getName() {
         return name;

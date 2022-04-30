@@ -7,12 +7,37 @@ import java.util.List;
 public class Sujet {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long sujet_id;
-    private String sujet_name;
+    private Long id;
+    private String name;
+    private String description;
     @ManyToOne
     private CategorieItem categorieItem;
-    @ManyToOne
+    @OneToMany
     private List<Cours> cours;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
 
     public CategorieItem getCategorieItem() {
         return categorieItem;
@@ -22,19 +47,11 @@ public class Sujet {
         this.categorieItem = categorieItem;
     }
 
-    public Long getSujet_id() {
-        return sujet_id;
+    public List<Cours> getCours() {
+        return cours;
     }
 
-    public void setSujet_id(Long sujet_id) {
-        this.sujet_id = sujet_id;
-    }
-
-    public String getSujet_name() {
-        return sujet_name;
-    }
-
-    public void setSujet_name(String sujet_name) {
-        this.sujet_name = sujet_name;
+    public void setCours(List<Cours> cours) {
+        this.cours = cours;
     }
 }

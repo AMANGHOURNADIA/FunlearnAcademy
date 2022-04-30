@@ -18,12 +18,9 @@ public class CategorieService {
         return categorieDao.findById(id);
     }
 
-    public Categorie findByName(String name) {
-        return categorieDao.findByName(name);
-    }
     @Transactional
-    public void deleteByCode(String name) {
-        categorieDao.deleteByCode(name);
+    public void deleteById(Long id) {
+        categorieDao.deleteById(id);
     }
 
     public List<Categorie> findAll() {

@@ -9,8 +9,8 @@ import java.util.List;
 
 @Repository
 public interface SujetDao extends JpaRepository<Sujet, Long> {
-    Sujet findBySujet_id(Long sujet_id);
-    List<Sujet> findsBySujet_name(String sujet_name);
-    int deleteBySujet_id(Long sujet_id);
-    int deleteBySujet_name(String sujet_name);
+    Sujet findByid(Long id);
+
+    void deleteById(Long id);
+
 }

@@ -6,7 +6,6 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface SectionDao extends JpaRepository<Section, Long> {
-    Section findBySection_name(String section_name);
-    Section findBySection_id(Long section_id);
-    int deleteBySection_id(Long section_id);
+   Section findBySection_id(Long section_id);
+   void deleteBySection_id(Long section_id);
 }

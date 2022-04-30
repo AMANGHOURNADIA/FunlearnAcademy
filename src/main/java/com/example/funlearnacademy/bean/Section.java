@@ -1,9 +1,7 @@
 package com.example.funlearnacademy.bean;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.List;
 
 @Entity
 public class Section {
@@ -11,6 +9,10 @@ public class Section {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long section_id;
     private String section_name;
+    @ManyToOne
+    private Cours cours;
+    @OneToMany
+    private List<Chapitre> chapitres;
 
     public Long getSection_id() {
         return section_id;

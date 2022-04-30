@@ -3,29 +3,28 @@ package com.example.funlearnacademy.service;
 import com.example.funlearnacademy.bean.Sujet;
 import com.example.funlearnacademy.dao.SujetDao;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.List;
-
+@Service
 public class SujetService {
-    public List<Sujet> findBySujet_name(String sujet_name) {
-        return sujetDao.findsBySujet_name(sujet_name);
+    @Autowired
+    private SujetDao sujetDao;
+
+    public Sujet findByid(Long id) {
+        return sujetDao.findByid(id);
     }
-    public Sujet findBySujet_id(Long sujet_id) {
-        return sujetDao.findBySujet_id(sujet_id);
+  @Transactional
+    public void deleteById(Long id) {
+        sujetDao.deleteById(id);
     }
 
-    public int deleteBySujet_name(String sujet_name) {
-        return sujetDao.deleteBySujet_name(sujet_name);
-    }
-
-    public int deleteBySujet_id(Long sujet_id) {
-        return sujetDao.deleteBySujet_id(sujet_id);
+    public List<Sujet> findAll() {
+        return sujetDao.findAll();
     }
 
     public Sujet save(Sujet sujet) {
         return sujetDao.save(sujet);
     }
-
-    @Autowired
-    private SujetDao sujetDao;
 }

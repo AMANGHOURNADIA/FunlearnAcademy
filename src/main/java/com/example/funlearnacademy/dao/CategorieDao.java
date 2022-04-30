@@ -10,9 +10,7 @@ import java.util.Optional;
 public interface CategorieDao extends JpaRepository<Categorie, Long> {
     Optional<Categorie> findById(Long id);
 
-    Categorie findByName(String name);
-
-    void deleteByCode(String code);
+    void deleteById(Long id);
 
 
 }

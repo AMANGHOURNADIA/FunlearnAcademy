@@ -1,27 +1,57 @@
 package com.example.funlearnacademy.bean;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+
 @Entity
 public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     protected  Long id ;
     protected  String email;
-    protected  String firstname;
+    protected  String fullname;
     protected  String username;
-    protected  String lastname;
     protected  String password;
-    protected  String confirmpassword;
-    protected  String role;
+    private String img;
+    @ManyToOne
+    protected  Role role;
 
-    public String getRole() {
+    public User() {
+    }
+
+    public User(String email, String password) {
+        this.email=  email;
+        this.password = password;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getImg() {
+        return img;
+    }
+
+    public void setImg(String img) {
+        this.img = img;
+    }
+
+    public User(Long id, String email, String fullname, String password, Role role) {
+        this.id = id;
+        this.email = email;
+        this.fullname = fullname;
+        this.password = password;
+        this.role = role;
+    }
+
+    public Role getRole() {
         return role;
     }
 
-    public void setRole(String role) {
+    public void setRole(Role role) {
         this.role = role;
     }
 
@@ -41,28 +71,12 @@ public class User {
         this.email = email;
     }
 
-    public String getFirstname() {
-        return firstname;
+    public String getFullname() {
+        return fullname;
     }
 
-    public void setFirstname(String firstname) {
-        this.firstname = firstname;
-    }
-
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
-    public String getLastname() {
-        return lastname;
-    }
-
-    public void setLastname(String lastname) {
-        this.lastname = lastname;
+    public void setFullname(String fullname) {
+        this.fullname = fullname;
     }
 
     public String getPassword() {
@@ -73,11 +87,4 @@ public class User {
         this.password = password;
     }
 
-    public String getConfirmpassword() {
-        return confirmpassword;
-    }
-
-    public void setConfirmpassword(String confirmpassword) {
-        this.confirmpassword = confirmpassword;
-    }
 }

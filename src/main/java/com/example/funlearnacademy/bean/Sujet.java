@@ -12,8 +12,6 @@ public class Sujet {
     private String description;
     @ManyToOne
     private CategorieItem categorieItem;
-    @OneToMany
-    private List<Cours> cours;
 
     public Long getId() {
         return id;
@@ -47,11 +45,5 @@ public class Sujet {
         this.categorieItem = categorieItem;
     }
 
-    public List<Cours> getCours() {
-        return cours;
-    }
 
-    public void setCours(List<Cours> cours) {
-        this.cours = cours;
-    }
 }

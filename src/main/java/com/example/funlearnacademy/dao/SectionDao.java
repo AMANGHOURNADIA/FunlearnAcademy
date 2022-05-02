@@ -4,8 +4,11 @@ import com.example.funlearnacademy.bean.Section;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 @Repository
 public interface SectionDao extends JpaRepository<Section, Long> {
    Section findBySection_id(Long section_id);
+   List<Section> findByCoursId(Long id);
    void deleteBySection_id(Long section_id);
 }

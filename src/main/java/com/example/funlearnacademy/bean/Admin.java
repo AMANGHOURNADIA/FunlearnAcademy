@@ -1,6 +1,7 @@
 package com.example.funlearnacademy.bean;
 
 import javax.persistence.Entity;
+import java.util.Collection;
 
 
 @Entity
@@ -9,8 +10,8 @@ public class Admin extends User {
         super();
     }
 
-    public Admin(User user) {
-        super(user.id, user.email, user.password, user.fullname, user.role);
+    public Admin(Long id, String email, String fullname, String password, Collection<Role> roles) {
+        super(id, email, fullname, password, roles);
     }
 
     public Admin(String username, String password) {
@@ -36,13 +37,6 @@ public class Admin extends User {
     }
     public void setPassword(String password) {
         this.password = password;
-    }
-
-    public Role getRole() {
-        return role;
-    }
-    public void setRole(Role role) {
-        this.role = role;
     }
 
     public String getFullname() {

@@ -2,13 +2,13 @@ package com.example.funlearnacademy.bean;
 
 import javax.persistence.Entity;
 
+
 @Entity
 public class Formateur extends User{
     private String ref;
     private Long  bankaccount ;
     private String grade;
     private String specialite;
-    private String urlimg;
 
     public String getRef() {
         return ref;
@@ -16,14 +16,6 @@ public class Formateur extends User{
 
     public void setRef(String ref) {
         this.ref = ref;
-    }
-
-    public String getUrlimg() {
-        return urlimg;
-    }
-
-    public void setUrlimg(String urlimg) {
-        this.urlimg = urlimg;
     }
 
     public Long getBankaccount() {

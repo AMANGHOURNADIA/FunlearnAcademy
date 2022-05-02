@@ -12,8 +12,6 @@ public class CategorieItem {
     private String description;
     @ManyToOne
     private Categorie categorie;
-    @OneToMany
-    private List<Sujet> sujet;
 
     public String getDescription() {
         return description;
@@ -21,14 +19,6 @@ public class CategorieItem {
 
     public void setDescription(String description) {
         this.description = description;
-    }
-
-    public List<Sujet> getSujet() {
-        return sujet;
-    }
-
-    public void setSujet(List<Sujet> sujet) {
-        this.sujet = sujet;
     }
 
     public Categorie getCategorie() {

@@ -16,7 +16,10 @@ public class SectionFormateurWs {
     public Section findBySection_id(@PathVariable Long section_id) {
         return sectionService.findBySection_id(section_id);
     }
-
+    @GetMapping("/cours/find/{id}")
+    public List<Section> findByCoursId(@PathVariable Long id) {
+        return sectionService.findByCoursId(id);
+    }
     @DeleteMapping("/section/delete/{id}")
     public void deleteBySection_id(@PathVariable Long section_id) {
         sectionService.deleteBySection_id(section_id);

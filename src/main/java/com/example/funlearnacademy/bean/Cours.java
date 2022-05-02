@@ -13,8 +13,8 @@ public class Cours {
     private Double price;
     @ManyToOne
     private Formateur formateur;
-    @OneToMany
-    private List<Section> sections;
+    @ManyToOne
+    private Sujet sujet;
 
     public Cours() {
     }
@@ -23,7 +23,7 @@ public class Cours {
         this.id = id;
         this.name = name;
         this.description = description;
-        this.price=price;
+        this.price = price;
     }
 
     public Long getId() {
@@ -66,11 +66,4 @@ public class Cours {
         this.formateur = formateur;
     }
 
-    public List<Section> getSections() {
-        return sections;
-    }
-
-    public void setSections(List<Section> sections) {
-        this.sections = sections;
-    }
 }

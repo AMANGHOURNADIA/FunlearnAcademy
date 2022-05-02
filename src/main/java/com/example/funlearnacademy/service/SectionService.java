@@ -13,6 +13,10 @@ public class SectionService {
     @Autowired
     private SectionDao sectionDao;
 
+    public List<Section> findByCoursId(Long id) {
+        return sectionDao.findByCoursId(id);
+    }
+
     public Section findBySection_id(Long section_id) {
         return sectionDao.findBySection_id(section_id);
     }

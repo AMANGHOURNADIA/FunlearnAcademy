@@ -1,7 +1,7 @@
 package com.example.funlearnacademy.bean;
 
 import javax.persistence.*;
-import java.util.List;
+
 
 @Entity
 public class Section {
@@ -11,8 +11,14 @@ public class Section {
     private String section_name;
     @ManyToOne
     private Cours cours;
-    @OneToMany
-    private List<Chapitre> chapitres;
+
+    public Cours getCours() {
+        return cours;
+    }
+
+    public void setCours(Cours cours) {
+        this.cours = cours;
+    }
 
     public Long getSection_id() {
         return section_id;

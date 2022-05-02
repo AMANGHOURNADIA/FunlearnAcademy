@@ -1,7 +1,7 @@
 package com.example.funlearnacademy.bean;
 
 import javax.persistence.*;
-import java.util.List;
+
 
 @Entity
 public class Categorie {
@@ -11,8 +11,6 @@ public class Categorie {
     private String Cat_name;
     private String Cat_code;
     private String description;
-    @OneToMany
-    private List<CategorieItem> categorieItems;
 
     public String getDescription() {
         return description;
@@ -20,14 +18,6 @@ public class Categorie {
 
     public void setDescription(String description) {
         this.description = description;
-    }
-
-    public List<CategorieItem> getCategorieItems() {
-        return categorieItems;
-    }
-
-    public void setCategorieItems(List<CategorieItem> categorieItems) {
-        this.categorieItems = categorieItems;
     }
 
     public Long getId() {

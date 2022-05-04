@@ -14,11 +14,13 @@ import java.util.List;
 public class ChapitreAdminWs {
     @Autowired
     private ChapitreService chapitreService;
+
     @GetMapping("/find/chapitre/{id}")
     public List<Chapitre> findBySectionSection_idOrderByNumeroOrder(@PathVariable Long id) {
         return chapitreService.findBySectionSection_idOrderByNumeroOrder(id);
     }
-   @GetMapping("/sectino_id/{id}")
+
+    @GetMapping("/sectino_id/{id}")
     public List<Chapitre> findBySectionSection_id(@PathVariable Long id) {
         return chapitreService.findBySectionSection_id(id);
     }
@@ -27,11 +29,13 @@ public class ChapitreAdminWs {
     public void deleteById(@PathVariable Long id) {
         chapitreService.deleteById(id);
     }
-  @GetMapping("/")
+
+    @GetMapping("/")
     public List<Chapitre> findAll() {
         return chapitreService.findAll();
     }
-  @PostMapping("/")
+
+    @PostMapping("/")
     public Chapitre save(@RequestBody Chapitre chapitre) {
         return chapitreService.save(chapitre);
     }

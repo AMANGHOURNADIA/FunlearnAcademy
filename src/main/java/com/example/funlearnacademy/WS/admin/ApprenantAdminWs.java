@@ -4,26 +4,23 @@ import com.example.funlearnacademy.bean.Apprenant;
 import com.example.funlearnacademy.service.ApprenantService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @Controller
-@RequestMapping
+@RequestMapping("admin/apprenant")
 public class ApprenantAdminWs {
     @Autowired
     private ApprenantService apprenantService;
 
-    @GetMapping("/find/{reference}")
-    public Apprenant findByReference(String reference) {
+    @GetMapping("/reference/{reference}")
+    public Apprenant findByReference(@PathVariable String reference) {
         return apprenantService.findByReference(reference);
     }
 
-    @DeleteMapping("/delete/{reference}")
-    public int deleteByReference(String reference) {
+    @DeleteMapping("/reference/{reference}")
+    public int deleteByReference(@PathVariable String reference) {
         return apprenantService.deleteByReference(reference);
     }
 
@@ -33,7 +30,7 @@ public class ApprenantAdminWs {
     }
 
     @PostMapping("/")
-    public Apprenant save(Apprenant apprenant) {
+    public Apprenant save(@RequestBody Apprenant apprenant) {
         return apprenantService.save(apprenant);
     }
 }

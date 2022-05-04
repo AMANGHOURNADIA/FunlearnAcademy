@@ -11,24 +11,27 @@ import java.util.List;
 import java.util.Optional;
 
 @Controller
-@RequestMapping
+@RequestMapping("admin/categorie")
 public class CategorieAdminWs {
     @Autowired
     private CategorieService categorieService;
-    @GetMapping("/find/{id}")
+
+    @GetMapping("/id/{id}")
     public Optional<Categorie> findById(@PathVariable Long id) {
         return categorieService.findById(id);
     }
 
-    @DeleteMapping("/delet/{name}")
+    @DeleteMapping("/id/{id}")
     public void deleteById(@PathVariable Long id) {
         categorieService.deleteById(id);
     }
+
     @GetMapping("/")
     public List<Categorie> findAll() {
         return categorieService.findAll();
     }
-  @PostMapping("/")
+
+    @PostMapping("/")
     public Categorie save(@RequestBody Categorie categorie) {
         return categorieService.save(categorie);
     }

@@ -11,11 +11,11 @@ import java.util.List;
 import java.util.Optional;
 
 @Controller
-@RequestMapping
+@RequestMapping("admin/CategoriesItem")
 public class CategorieItemAdminWs {
     @Autowired
     private CategorieItemService categorieItemService;
-    @GetMapping("/categorieitm/{id}")
+    @GetMapping("/id/{id}")
     public Optional<CategorieItem> findById(@PathVariable Long id) {
         return categorieItemService.findById(id);
     }

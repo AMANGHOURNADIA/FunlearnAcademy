@@ -37,9 +37,7 @@ public class UserService {
         return userDao.upedate(user);
     }
 
-    public User findByUsernameWithRole(String username) {
-        return userDao.findByUsernameWithRole(username);
-    }
+
 
     public User findByUsername(String username) {
         return userDao.findByUsername(username);

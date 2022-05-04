@@ -7,7 +7,7 @@ import javax.persistence.*;
 public class Section {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long section_id;
+    private Long id;
     private String section_name;
     @ManyToOne
     private Cours cours;
@@ -20,12 +20,12 @@ public class Section {
         this.cours = cours;
     }
 
-    public Long getSection_id() {
-        return section_id;
+    public Long getId() {
+        return id;
     }
 
-    public void setSection_id(Long section_id) {
-        this.section_id = section_id;
+    public void setId(Long section_id) {
+        this.id = section_id;
     }
 
     public String getSection_name() {

@@ -7,13 +7,13 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
-@Controller
-@RequestMapping
+@RestController
+@RequestMapping("admin/admin")
 public class AdminAdminWs {
     @Autowired
     private AdminService adminService;
 
-    @DeleteMapping("/admin/{email}")
+    @DeleteMapping("/email/{email}")
     public int deleteByEmail(@PathVariable String email) {
         return adminService.deleteByEmail(email);
     }
@@ -21,7 +21,7 @@ public class AdminAdminWs {
     public List<Admin> findAll() {
         return adminService.findAll();
     }
-    @GetMapping("/admin/{id}")
+    @GetMapping("/id/{id}")
     public Admin findAdminById(@PathVariable Long id) {
         return adminService.findAdminById(id);
     }

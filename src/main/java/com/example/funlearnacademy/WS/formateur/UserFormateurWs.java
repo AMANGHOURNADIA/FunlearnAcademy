@@ -45,10 +45,7 @@ public class UserFormateurWs {
         return userService.update(user);
     }
 
-    @GetMapping("/find/{username}/{role}")
-    public User findByUsernameWithRoles(@PathVariable String username) {
-        return userService.findByUsernameWithRole(username);
-    }
+
     @DeleteMapping("/delete/{username}")
     public int deleteByUsername(@PathVariable String username) {
         return userService.deleteByUsername(username);

@@ -18,11 +18,11 @@ public class SectionService {
     }
 
     public Section findBySection_id(Long section_id) {
-        return sectionDao.findBySection_id(section_id);
+        return sectionDao.findSectionById(section_id);
     }
    @Transactional
     public void deleteBySection_id(Long section_id) {
-        sectionDao.deleteBySection_id(section_id);
+        sectionDao.deleteById(section_id);
     }
 
     public List<Section> findAll() {

@@ -19,22 +19,12 @@ public class UserService {
         return userDao.findByEmail(email);
     }
 
-    public int save(User user) {
-        if (findByEmail(user.getEmail()) != null) {
-            return -1;
-        } else {
-            userDao.save(user);
-            return 1;
-        }
+    public User save(User user) {
+        return  userDao.save(user);
     }
 
     public void deleteById(Long id) {
         userDao.deleteById(id);
-    }
-
-
-    public User update(User user) {
-        return userDao.upedate(user);
     }
 
 

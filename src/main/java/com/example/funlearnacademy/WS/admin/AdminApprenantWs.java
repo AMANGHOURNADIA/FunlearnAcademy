@@ -1,16 +1,15 @@
-package com.example.funlearnacademy.WS.apprenant;
+package com.example.funlearnacademy.WS.admin;
 
 import com.example.funlearnacademy.bean.Apprenant;
 import com.example.funlearnacademy.service.ApprenantService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
-@RequestMapping("/apprenant/apprenant")
-public class ApprenantApprenantWs {
+@RequestMapping("/admin/apprenant")
+public class AdminApprenantWs {
     @Autowired
     private ApprenantService apprenantService;
 

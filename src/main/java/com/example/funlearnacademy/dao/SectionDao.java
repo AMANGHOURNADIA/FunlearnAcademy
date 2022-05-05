@@ -8,6 +8,7 @@ import java.util.List;
 
 @Repository
 public interface SectionDao extends JpaRepository<Section, Long> {
-   Section findSectionById(Long section_id);
+   Section findSectionById(Long id);
    List<Section> findByCoursId(Long id);
+   void deleteById(Long id);
 }

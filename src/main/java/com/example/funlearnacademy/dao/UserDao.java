@@ -14,6 +14,4 @@ public interface UserDao extends JpaRepository<User, Long> {
 
     int deleteByUsername(String username);
 
-
-    User upedate(User user);
 }

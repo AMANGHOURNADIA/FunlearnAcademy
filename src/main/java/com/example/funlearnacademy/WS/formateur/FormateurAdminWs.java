@@ -1,14 +1,15 @@
-package com.example.funlearnacademy.WS.admin;
+package com.example.funlearnacademy.WS.formateur;
 
 import com.example.funlearnacademy.bean.Admin;
 import com.example.funlearnacademy.service.AdminService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/admin/admin")
-public class AdminAdminWs {
+@RequestMapping("/formateur/admin")
+public class FormateurAdminWs {
     @Autowired
     private AdminService adminService;
 

@@ -14,24 +14,29 @@ import java.util.Optional;
 public class ApprenantUserWs {
     @Autowired
     private UserService userService;
+
     @GetMapping("/")
     public List<User> findAll() {
         return userService.findAll();
     }
+
     @GetMapping("/email/{email}")
     public User findByEmail(@PathVariable String email) {
         return userService.findByEmail(email);
     }
+
     @PostMapping("/")
     public User save(@RequestBody User user) {
         return userService.save(user);
     }
+
     @DeleteMapping("/id/{id}")
     public void deleteById(@PathVariable Long id) {
         userService.deleteById(id);
     }
+
     @GetMapping("/username/{username}")
-    public User findByUsername( @PathVariable String username) {
+    public User findByUsername(@PathVariable String username) {
         return userService.findByUsername(username);
     }
 
@@ -39,7 +44,6 @@ public class ApprenantUserWs {
     public Optional<User> findById(@PathVariable Long id) {
         return userService.findById(id);
     }
-
 
 
     @DeleteMapping("/username/{username}")

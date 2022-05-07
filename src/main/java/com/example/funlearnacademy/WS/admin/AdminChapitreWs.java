@@ -13,12 +13,12 @@ public class AdminChapitreWs {
     @Autowired
     private ChapitreService chapitreService;
 
-    @GetMapping("/Section/{id}")
+    @GetMapping("/Section/OrderByNumeroOrder/id/{id}")
     public List<Chapitre> findBySectionIdOrderByNumeroOrder(@PathVariable Long id) {
         return chapitreService.findBySectionIdOrderByNumeroOrder(id);
     }
 
-    @GetMapping("/Section/{id}")
+    @GetMapping("/Section/id/{id}")
     public List<Chapitre> findBySectionId(@PathVariable Long id) {
         return chapitreService.findBySectionId(id);
     }

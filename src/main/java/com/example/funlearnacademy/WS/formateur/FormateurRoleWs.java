@@ -13,14 +13,17 @@ import java.util.List;
 public class FormateurRoleWs {
     @Autowired
     private RoleService roleService;
+
     @GetMapping("/authority/{authority}")
     public Role findByAuthority(@PathVariable String authority) {
         return roleService.findByAuthority(authority);
     }
+
     @GetMapping("/")
     public List<Role> findAll() {
         return roleService.findAll();
     }
+
     @PostMapping("/")
     public Role save(@RequestBody Role role) {
         return roleService.save(role);

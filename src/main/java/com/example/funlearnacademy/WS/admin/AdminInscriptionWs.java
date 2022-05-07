@@ -19,7 +19,7 @@ public class AdminInscriptionWs {
         return inscriptionService.findByNumber(number);
     }
 
-    @GetMapping("/Apprenant/{id}")
+    @GetMapping("/apprenant/id/{id}")
     public Inscription findInscriptionByApprenantId(@PathVariable Long id) {
         return inscriptionService.findInscriptionByApprenantId(id);
     }
@@ -29,7 +29,7 @@ public class AdminInscriptionWs {
         return inscriptionService.deleteByNumber(number);
     }
 
-    @DeleteMapping("/Apprenant/refernece/{reference}")
+    @DeleteMapping("/apprenant/refernece/{reference}")
     public int deleteByApprenantReference(@PathVariable String reference) {
         return inscriptionService.deleteByApprenantReference(reference);
     }
@@ -39,7 +39,7 @@ public class AdminInscriptionWs {
         inscriptionService.deleteById(id);
     }
 
-    @DeleteMapping("/Apprenant/id/{id}")
+    @DeleteMapping("/apprenant/id/{id}")
     public int deleteInscriptionByApprenantId(@PathVariable Long id) {
         return inscriptionService.deleteInscriptionByApprenantId(id);
     }
@@ -49,7 +49,7 @@ public class AdminInscriptionWs {
         return inscriptionService.findInscriptionById(id);
     }
 
-    @GetMapping("/username/{username}")
+    @GetMapping("/apprenant/username/{username}")
     public Inscription findInscriptionByApprenantUsername(@PathVariable String username) {
         return inscriptionService.findInscriptionByApprenantUsername(username);
     }

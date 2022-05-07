@@ -5,32 +5,39 @@ import com.example.funlearnacademy.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
+
 import java.util.List;
 import java.util.Optional;
 
 @RestController
 @RequestMapping("admin/user")
-public class AdminUserWs {
+public class AdminUserWs
+{
     @Autowired
     private UserService userService;
+
     @GetMapping("/")
     public List<User> findAll() {
         return userService.findAll();
     }
+
     @GetMapping("/email/{email}")
     public User findByEmail(@PathVariable String email) {
         return userService.findByEmail(email);
     }
+
     @PostMapping("/")
     public User save(@RequestBody User user) {
         return userService.save(user);
     }
+
     @DeleteMapping("/id/{id}")
     public void deleteById(@PathVariable Long id) {
         userService.deleteById(id);
     }
-   @GetMapping("/username/{username}")
-    public User findByUsername( @PathVariable String username) {
+
+    @GetMapping("/username/{username}")
+    public User findByUsername(@PathVariable String username) {
         return userService.findByUsername(username);
     }
 
@@ -38,7 +45,6 @@ public class AdminUserWs {
     public Optional<User> findById(@PathVariable Long id) {
         return userService.findById(id);
     }
-
 
 
     @DeleteMapping("/username/{username}")

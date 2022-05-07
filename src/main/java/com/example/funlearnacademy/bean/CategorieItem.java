@@ -1,7 +1,6 @@
 package com.example.funlearnacademy.bean;
 
 import javax.persistence.*;
-import java.util.List;
 
 @Entity
 public class CategorieItem {

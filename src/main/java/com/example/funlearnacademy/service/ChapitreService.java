@@ -13,12 +13,12 @@ public class ChapitreService {
     @Autowired
     private ChapitreDao chapitreDao;
 
-    public List<Chapitre> findBySectionSection_idOrderByNumeroOrder(Long id) {
-        return chapitreDao.findBySectionSection_idOrderByNumeroOrder(id);
+    public List<Chapitre> findBySectionIdOrderByNumeroOrder(Long id) {
+        return chapitreDao.findBySectionIdOrderByNumeroOrder(id);
     }
 
-    public List<Chapitre> findBySectionSection_id(Long id) {
-        return chapitreDao.findBySectionSection_id(id);
+    public List<Chapitre> findBySectionId(Long id) {
+        return chapitreDao.findBySectionId(id);
     }
   @Transactional
     public void deleteById(Long id) {

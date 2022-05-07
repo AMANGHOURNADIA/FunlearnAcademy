@@ -1,4 +1,4 @@
-package com.example.funlearnacademy.WS.apprenant;
+package com.example.funlearnacademy.WS.formateur;
 
 import com.example.funlearnacademy.bean.Apprenant;
 import com.example.funlearnacademy.service.ApprenantService;
@@ -9,8 +9,8 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/apprenant/apprenant")
-public class ApprenantApprenantWs {
+@RequestMapping("/formateur/apprenant")
+public class FormateurApprenantWs {
     @Autowired
     private ApprenantService apprenantService;
 

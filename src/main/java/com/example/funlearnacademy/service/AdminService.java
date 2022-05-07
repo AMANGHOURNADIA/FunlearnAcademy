@@ -9,6 +9,11 @@ import java.util.List;
 
 @Service
 public class AdminService {
+    @Autowired
+    private AdminDao adminDao;
+    @Autowired
+    private UserService userService;
+
     @Transactional
     public int deleteByEmail(String email) {
         return adminDao.deleteByEmail(email);
@@ -28,8 +33,4 @@ public class AdminService {
 
 
 
-    @Autowired
-    private AdminDao adminDao;
-    @Autowired
-    private UserService userService;
 }

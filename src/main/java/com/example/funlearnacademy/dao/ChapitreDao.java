@@ -8,8 +8,8 @@ import java.util.List;
 
 @Repository
 public interface ChapitreDao  extends JpaRepository<Chapitre, Long> {
-    List<Chapitre> findBySectionSection_idOrderByNumeroOrder(Long id);
-    List<Chapitre> findBySectionSection_id(Long id);
+    List<Chapitre> findBySectionIdOrderByNumeroOrder(Long id);
+    List<Chapitre> findBySectionId(Long id);
     void deleteById(Long id);
 
 }

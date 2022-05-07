@@ -19,7 +19,7 @@ public class InscriptionAdminWs {
         return inscriptionService.findByNumber(number);
     }
 
-    @GetMapping("/id/{id}")
+    @GetMapping("/apprenant/id/{id}")
     public Inscription findInscriptionByApprenantId(@PathVariable Long id) {
         return inscriptionService.findInscriptionByApprenantId(id);
     }

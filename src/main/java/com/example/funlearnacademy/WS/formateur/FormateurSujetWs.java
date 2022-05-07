@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("formateur/Sujet")
+@RequestMapping("formateur/sujet")
 public class FormateurSujetWs {
     @Autowired
     private SujetService sujetService;

@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("formateur/User")
+@RequestMapping("formateur/user")
 public class FormateurUserWs {
     @Autowired
     private UserService userService;

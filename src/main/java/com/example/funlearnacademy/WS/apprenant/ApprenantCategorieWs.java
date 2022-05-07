@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("apprenant/categories")
+@RequestMapping("apprenant/categorie")
 public class ApprenantCategorieWs {
     @Autowired
     private CategorieService categorieService;

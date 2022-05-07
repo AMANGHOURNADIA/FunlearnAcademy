@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("admin/Chapitre")
+@RequestMapping("admin/chapitre")
 public class AdminChapitreWs {
     @Autowired
     private ChapitreService chapitreService;

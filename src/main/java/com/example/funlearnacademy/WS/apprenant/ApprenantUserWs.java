@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("apprenant/User")
+@RequestMapping("apprenant/user")
 public class ApprenantUserWs {
     @Autowired
     private UserService userService;

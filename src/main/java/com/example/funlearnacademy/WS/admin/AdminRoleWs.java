@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("admin/Role")
+@RequestMapping("admin/role")
 public class AdminRoleWs {
     @Autowired
     private RoleService roleService;

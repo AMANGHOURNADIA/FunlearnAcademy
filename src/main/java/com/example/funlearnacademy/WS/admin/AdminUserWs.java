@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("admin/User")
+@RequestMapping("admin/user")
 public class AdminUserWs {
     @Autowired
     private UserService userService;

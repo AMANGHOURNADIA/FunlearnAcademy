@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 @RestController
-@RequestMapping("formateur/Inscription")
+@RequestMapping("formateur/inscription")
 public class FormateurInscriptionWs {
     @Autowired
     private InscriptionService inscriptionService;

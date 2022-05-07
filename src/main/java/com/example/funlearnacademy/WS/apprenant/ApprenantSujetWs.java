@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("apprenant/Sujet")
+@RequestMapping("apprenant/sujet")
 public class ApprenantSujetWs {
     @Autowired
     private SujetService sujetService;

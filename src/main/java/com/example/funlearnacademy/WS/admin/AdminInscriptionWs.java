@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("admin/Inscription")
+@RequestMapping("admin/inscription")
 public class AdminInscriptionWs {
     @Autowired
     private InscriptionService inscriptionService;

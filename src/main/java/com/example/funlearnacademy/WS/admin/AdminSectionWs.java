@@ -10,7 +10,7 @@ import javax.transaction.Transactional;
 import java.util.List;
 
 @RestController
-@RequestMapping("admin/Section")
+@RequestMapping("admin/section")
 public class AdminSectionWs {
     @Autowired
     private SectionService sectionService;

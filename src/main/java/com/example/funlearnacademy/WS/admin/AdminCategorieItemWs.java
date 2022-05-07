@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("admin/CategoriesItem")
+@RequestMapping("admin/categoriesItem")
 public class AdminCategorieItemWs {
     @Autowired
     private CategorieItemService categorieItemService;

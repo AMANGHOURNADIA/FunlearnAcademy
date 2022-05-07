@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("apprenant/Role")
+@RequestMapping("apprenant/role")
 public class ApprenantRoleWs {
     @Autowired
     private RoleService roleService;

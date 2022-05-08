@@ -1,12 +1,14 @@
 package com.example.funlearnacademy.bean;
 
+import org.springframework.security.core.userdetails.UserDetails;
+
 import javax.persistence.*;
 import java.util.Collection;
 
 import static javax.persistence.FetchType.EAGER;
 
 @Entity
-public class User {
+public class User implements UserDetails {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     protected  Long id ;
@@ -14,7 +16,6 @@ public class User {
     protected  String fullname;
     protected  String username;
     protected  String password;
-    protected String img;
     @ManyToMany(fetch = EAGER)
     protected Collection<Role> authorities;
     protected String role;
@@ -22,7 +23,7 @@ public class User {
     protected boolean credentialsNonExpired=true;
     protected boolean accountNonLocked=true;
     protected boolean enabled=true;
-
+    protected String image;
 
     public User() {
     }
@@ -69,15 +70,43 @@ public class User {
     public void setFullname(String fullname) {
         this.fullname = fullname;
     }
-
+    @Override
     public String getUsername() {
         return username;
+    }
+
+    @Override
+    public boolean isAccountNonExpired() {
+        return accountNonExpired;
+    }
+
+    @Override
+    public boolean isAccountNonLocked() {
+        return accountNonLocked;
+    }
+
+    @Override
+    public boolean isCredentialsNonExpired() {
+        return credentialsNonExpired;
+    }
+
+    @Override
+    public boolean isEnabled() {
+        return enabled;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
     }
 
     public void setUsername(String username) {
         this.username = username;
     }
-
+    @Override
     public String getPassword() {
         return password;
     }
@@ -86,14 +115,7 @@ public class User {
         this.password = password;
     }
 
-    public String getImg() {
-        return img;
-    }
-
-    public void setImg(String img) {
-        this.img = img;
-    }
-
+    @Override
     public Collection<Role> getAuthorities() {
         return authorities;
     }

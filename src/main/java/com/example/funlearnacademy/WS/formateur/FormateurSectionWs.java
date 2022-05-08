@@ -22,7 +22,7 @@ public class FormateurSectionWs {
         sectionService.deleteById(id);
     }
 
-    @GetMapping("/Cours/id/{id}")
+    @GetMapping("/cours/id/{id}")
     public List<Section> findByCoursId(@PathVariable Long id) {
         return sectionService.findByCoursId(id);
     }

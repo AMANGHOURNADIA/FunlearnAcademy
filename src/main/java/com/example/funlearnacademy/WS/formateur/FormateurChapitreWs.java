@@ -13,13 +13,13 @@ public class FormateurChapitreWs {
     @Autowired
     private ChapitreService chapitreService;
 
-    @GetMapping("/id/{id}")
-    public List<Chapitre> findBySectionSection_idOrderByNumeroOrder(@PathVariable Long id) {
+    @GetMapping("/Section/OrderByNumeroOrder/id/{id}")
+    public List<Chapitre> findBySectionIdOrderByNumeroOrder(@PathVariable Long id) {
         return chapitreService.findBySectionIdOrderByNumeroOrder(id);
     }
 
-    @GetMapping("/id/{id}")
-    public List<Chapitre> findBySectionSection_id(@PathVariable Long id) {
+    @GetMapping("/Section/id/{id}")
+    public List<Chapitre> findBySectionId(@PathVariable Long id) {
         return chapitreService.findBySectionId(id);
     }
 

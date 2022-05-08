@@ -12,7 +12,7 @@ public class AdminService {
     @Autowired
     private AdminDao adminDao;
     @Autowired
-    private UserService userService;
+    private UserServiceImpl userService;
 
     @Transactional
     public int deleteByEmail(String email) {

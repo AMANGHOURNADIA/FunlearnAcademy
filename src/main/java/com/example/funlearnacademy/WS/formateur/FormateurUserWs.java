@@ -1,48 +1,94 @@
 package com.example.funlearnacademy.WS.formateur;
 
 import com.example.funlearnacademy.bean.User;
-import com.example.funlearnacademy.service.UserService;
+import com.example.funlearnacademy.exception.NotAnImageFileException;
+import com.example.funlearnacademy.filter.JwtConstant;
+import com.example.funlearnacademy.service.UserServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.URL;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.List;
 import java.util.Optional;
+
+import static org.springframework.http.HttpStatus.OK;
+import static org.springframework.http.MediaType.IMAGE_JPEG_VALUE;
 
 @RestController
 @RequestMapping("formateur/user")
 public class FormateurUserWs {
-    @Autowired
-    private UserService userService;
+    @PostMapping("/login")
+    public ResponseEntity<User> signIn(@RequestBody User user) {
+        System.out.println(user.getPassword());
+        System.out.println(user.getUsername());
+        return userService.signIn(user);
+    }
+
+    @PostMapping("/update")
+    public User updateUser(@RequestBody User user) {
+        System.out.println(user.getId());
+        if (user.getId() == null) {
+            return null;
+        } else {
+            return userService.updateUser(user);
+        }
+    }
+
     @GetMapping("/")
     public List<User> findAll() {
         return userService.findAll();
     }
-    @GetMapping("/email/{email}")
-    public User findByEmail(@PathVariable String email) {
-        return userService.findByEmail(email);
-    }
+
     @PostMapping("/")
     public User save(@RequestBody User user) {
         return userService.save(user);
     }
-    @DeleteMapping("/id/{id}")
-    public void deleteById(@PathVariable Long id) {
-        userService.deleteById(id);
-    }
-    @GetMapping("/username/{username}")
-    public User findByUsername( @PathVariable String username) {
-        return userService.findByUsername(username);
+
+    @GetMapping(path = "/image/profile/{username}", produces = IMAGE_JPEG_VALUE)
+    public byte[] getTempProfileImage(@PathVariable("username") String username) throws IOException {
+        URL url = new URL(JwtConstant.TEMP_PROFILE_IMAGE_BASE_URL + username);
+        ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+        try (InputStream inputStream = url.openStream()) {
+            int bytesRead;
+            byte[] chunk = new byte[1024];
+            while ((bytesRead = inputStream.read(chunk)) > 0) {
+                byteArrayOutputStream.write(chunk, 0, bytesRead);
+            }
+        }
+        return byteArrayOutputStream.toByteArray();
     }
 
-    @GetMapping("/id/{id}")
-    public Optional<User> findById(@PathVariable Long id) {
-        return userService.findById(id);
+    @PostMapping("/updateProfileImage")
+    public ResponseEntity<User> updateProfileImage(@RequestParam("username") String username, @RequestParam(value = "profileImage") MultipartFile profileImage)
+            throws IOException, NotAnImageFileException {
+        User user = userService.updateProfileImage(username, profileImage);
+        return new ResponseEntity<>(user, OK);
+    }
+
+    @GetMapping(path = "/image/{username}/{fileName}", produces = IMAGE_JPEG_VALUE)
+    public byte[] getProfileImage(@PathVariable("username") String username, @PathVariable("fileName") String fileName) throws IOException {
+        return Files.readAllBytes(Paths.get(JwtConstant.USER_FOLDER + username + JwtConstant.FORWARD_SLASH + fileName));
     }
 
 
-    @DeleteMapping("/username/{username}")
-    public int deleteByUsername(@PathVariable String username) {
-        return userService.deleteByUsername(username);
+
+
+    @DeleteMapping("/delete/id/{id}")
+    public void deleteUserById(@PathVariable Long id) {
+        userService.deleteUserById(id);
     }
+
+
+
+    @Autowired
+    private UserServiceImpl userService;
+
+
 }

@@ -14,6 +14,7 @@ import java.util.Optional;
 public class AdminCategorieItemWs {
     @Autowired
     private CategorieItemService categorieItemService;
+
     @GetMapping("/id/{id}")
     public Optional<CategorieItem> findById(@PathVariable Long id) {
         return categorieItemService.findById(id);
@@ -28,6 +29,7 @@ public class AdminCategorieItemWs {
     public List<CategorieItem> findAll() {
         return categorieItemService.findAll();
     }
+
     @PostMapping("/")
     public CategorieItem save(@RequestBody CategorieItem categorieItem) {
         return categorieItemService.save(categorieItem);

@@ -6,21 +6,18 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+
 @RestController
 @RequestMapping("apprenant/chapitre")
 public class ApprenantChapitreWs {
     @Autowired
     private ChapitreService chapitreService;
 
-    @GetMapping("/id/{id}")
+    @GetMapping("/section/id/{id}")
     public List<Chapitre> findBySectionIdOrderByNumeroOrder(@PathVariable Long id) {
         return chapitreService.findBySectionIdOrderByNumeroOrder(id);
     }
 
-    @GetMapping("/id/{id}")
-    public List<Chapitre> findBySectionId(@PathVariable Long id) {
-        return chapitreService.findBySectionId(id);
-    }
 
     @DeleteMapping("/id/{id}")
     public void deleteById(@PathVariable Long id) {

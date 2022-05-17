@@ -1,5 +1,6 @@
 package com.example.funlearnacademy.service;
 
+import com.example.funlearnacademy.bean.Role;
 import com.example.funlearnacademy.bean.User;
 import com.example.funlearnacademy.dao.UserDao;
 import com.example.funlearnacademy.exception.NotAnImageFileException;
@@ -30,6 +31,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
+import static com.example.funlearnacademy.filter.RoleConstant.ROLE_ADMIN;
 import static java.nio.file.StandardCopyOption.REPLACE_EXISTING;
 import static org.springframework.http.HttpStatus.OK;
 import static org.springframework.http.MediaType.*;
@@ -97,17 +99,24 @@ public class UserServiceImpl implements UserService {
         return null;
     }
 
-    public User findByEmail(String email) {
-        return userDao.findByEmail(email);
+    public User findByEmail(String email) throws Exception {
+        User user = userDao.findByEmail(email);
+        if (user != null) {
+            throw new Exception("Email already exist !");
+        }
+        return user;
     }
 
     @Override
     public User save(User user) throws Exception {
         System.out.println(user.getUsername());
         System.out.println(user.getPassword());
-        System.out.println(user.getAuthorities());
-        User loadedUser = this.loadUserByUsername(user.getUsername());
-        if (loadedUser != null)
+        user.setAuthorities(Arrays.asList(new Role(ROLE_ADMIN)));
+        user.setRole(ROLE_ADMIN);
+        System.out.println(user.getRole());
+        User loadedUserByUsername =  userDao.findByUsername(user.getUsername());
+        this.findByEmail(user.getEmail());
+        if (loadedUserByUsername != null)
             throw new Exception("Username already exist !");
         else {
 //            prepareMessage(user);

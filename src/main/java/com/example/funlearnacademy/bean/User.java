@@ -24,6 +24,7 @@ public class User implements UserDetails {
     protected boolean accountNonLocked=true;
     protected boolean enabled=true;
     protected String image;
+    protected String token;
 
     public User() {
     }
@@ -130,5 +131,13 @@ public class User implements UserDetails {
 
     public void setRole(String role) {
         this.role = role;
+    }
+
+    public String getToken() {
+        return token;
+    }
+
+    public void setToken(String token) {
+        this.token = token;
     }
 }

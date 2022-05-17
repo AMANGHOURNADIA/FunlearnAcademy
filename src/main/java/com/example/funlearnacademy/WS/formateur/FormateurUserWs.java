@@ -47,7 +47,7 @@ public class FormateurUserWs {
     }
 
     @PostMapping("/")
-    public User save(@RequestBody User user) {
+    public User save(@RequestBody User user) throws Exception  {
         return userService.save(user);
     }
 

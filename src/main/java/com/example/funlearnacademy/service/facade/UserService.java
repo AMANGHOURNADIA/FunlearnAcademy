@@ -11,7 +11,7 @@ import java.util.List;
 public interface UserService extends UserDetailsService {
     ResponseEntity<User> signIn(User user);
 
-    User save(User user);
+    User save(User user) throws Exception;
 
     List<User> findAll();
 

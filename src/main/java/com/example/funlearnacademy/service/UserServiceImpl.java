@@ -58,15 +58,22 @@ public class UserServiceImpl implements UserService {
             throw new BadCredentialsException("bad credited for username " + user.getUsername());
         }
         User loadUserByUsername = loadUserByUsername(user.getUsername());
-        HttpHeaders jwtHeader = getJwtHeader(user);
-
-
-        return new ResponseEntity<>(loadUserByUsername, jwtHeader, OK);
+//        HttpHeaders jwtHeader = getJwtHeader(user);
+        String jwt = jwtUtil.generateToken(user);
+        loadUserByUsername.setToken(jwt);
+        HttpHeaders jwtHeader = new HttpHeaders();
+        jwtHeader.clearContentHeaders();
+        jwtHeader.set(JwtConstant.JWT_TOKEN_HEADER, jwt);
+        return ResponseEntity.ok()
+                .headers(jwtHeader)
+                .body(loadUserByUsername);
     }
 
     private HttpHeaders getJwtHeader(User user) {
         HttpHeaders headers = new HttpHeaders();
-        headers.add(JwtConstant.JWT_TOKEN_HEADER, jwtUtil.generateToken(user));
+        String jwt = jwtUtil.generateToken(user);
+        System.out.println(jwt);
+        headers.set(JwtConstant.JWT_TOKEN_HEADER, jwt);
         return headers;
     }
 
@@ -94,29 +101,26 @@ public class UserServiceImpl implements UserService {
         return userDao.findByEmail(email);
     }
 
-@Override
-    public User save(User user) {
-    System.out.println(user.getUsername());
-    System.out.println(user.getPassword());
-    System.out.println(user.getAuthorities());
-    User loadedUser = userDao.findByUsername(user.getUsername());
-    if (loadedUser != null)
-        return null;
-    else {
+    @Override
+    public User save(User user) throws Exception {
+        System.out.println(user.getUsername());
+        System.out.println(user.getPassword());
+        System.out.println(user.getAuthorities());
+        User loadedUser = this.loadUserByUsername(user.getUsername());
+        if (loadedUser != null)
+            throw new Exception("Username already exist !");
+        else {
 //            prepareMessage(user);
-        user.setPassword(passwordEncoder.encode(user.getPassword()));
-        user.setImage(getTemporaryProfileImageUrl(user.getUsername()));
-        roleService.save(user.getAuthorities());
-        return userDao.save(user);
-    }
+            user.setPassword(passwordEncoder.encode(user.getPassword()));
+            user.setImage(getTemporaryProfileImageUrl(user.getUsername()));
+            roleService.save(user.getAuthorities());
+            return userDao.save(user);
+        }
     }
 
     public void deleteById(Long id) {
         userDao.deleteById(id);
     }
-
-
-
 
 
     public Optional<User> findById(Long id) {
@@ -126,8 +130,6 @@ public class UserServiceImpl implements UserService {
     public int deleteByUsername(String username) {
         return userDao.deleteByUsername(username);
     }
-
-
 
 
     @Override
@@ -164,7 +166,7 @@ public class UserServiceImpl implements UserService {
                 LOGGER.info(JwtConstant.DIRECTORY_CREATED + userFolder);
             }
             Files.deleteIfExists(Paths.get(userFolder + user.getUsername() + JwtConstant.DOT + JwtConstant.JPG_EXTENSION));
-            Files.copy(profileImage.getInputStream(), userFolder.resolve(user.getUsername() +JwtConstant.DOT +JwtConstant.JPG_EXTENSION), REPLACE_EXISTING);
+            Files.copy(profileImage.getInputStream(), userFolder.resolve(user.getUsername() + JwtConstant.DOT + JwtConstant.JPG_EXTENSION), REPLACE_EXISTING);
             user.setImage(setProfileImageUrl(user.getUsername()));
             this.userDao.save(user);
             LOGGER.info(JwtConstant.FILE_SAVED_IN_FILE_SYSTEM + profileImage.getOriginalFilename());

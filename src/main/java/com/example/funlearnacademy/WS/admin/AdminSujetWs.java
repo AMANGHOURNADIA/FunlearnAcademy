@@ -14,6 +14,7 @@ import java.util.List;
 public class AdminSujetWs {
     @Autowired
     private SujetService sujetService;
+
     @GetMapping("/id/{id}")
     public Sujet findByid(@PathVariable Long id) {
         return sujetService.findByid(id);
@@ -23,12 +24,19 @@ public class AdminSujetWs {
     public void deleteById(@PathVariable Long id) {
         sujetService.deleteById(id);
     }
+
     @GetMapping("/")
     public List<Sujet> findAll() {
         return sujetService.findAll();
     }
+
     @PostMapping("/")
     public Sujet save(@RequestBody Sujet sujet) {
         return sujetService.save(sujet);
+    }
+
+    @GetMapping("/categorieItem/id/{id}")
+    public List<Sujet> findByCategorieItemId(@PathVariable Long id) {
+        return sujetService.findByCategorieItemId(id);
     }
 }

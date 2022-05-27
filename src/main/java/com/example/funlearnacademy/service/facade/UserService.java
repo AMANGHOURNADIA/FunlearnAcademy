@@ -20,4 +20,5 @@ public interface UserService extends UserDetailsService {
     void deleteUserById(Long id);
 
     User updateUser(User user);
+     User findByEmail(String email) throws Exception;
 }

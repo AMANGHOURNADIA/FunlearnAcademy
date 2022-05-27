@@ -17,7 +17,10 @@ public class ApprenantChapitreWs {
     public List<Chapitre> findBySectionIdOrderByNumeroOrder(@PathVariable Long id) {
         return chapitreService.findBySectionIdOrderByNumeroOrder(id);
     }
-
+    @GetMapping("/Section/id/{id}")
+    public List<Chapitre> findBySectionId(@PathVariable Long id) {
+        return chapitreService.findBySectionId(id);
+    }
 
     @DeleteMapping("/id/{id}")
     public void deleteById(@PathVariable Long id) {

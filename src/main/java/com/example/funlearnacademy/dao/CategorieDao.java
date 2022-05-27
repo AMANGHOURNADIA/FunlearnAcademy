@@ -8,9 +8,5 @@ import java.util.Optional;
 
 @Repository
 public interface CategorieDao extends JpaRepository<Categorie, Long> {
-    Optional<Categorie> findById(Long id);
-
-    void deleteById(Long id);
-
 
 }

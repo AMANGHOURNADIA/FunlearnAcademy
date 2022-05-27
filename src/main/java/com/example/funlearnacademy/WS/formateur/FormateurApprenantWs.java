@@ -30,7 +30,7 @@ public class FormateurApprenantWs {
     }
 
     @PostMapping("/")
-    public Apprenant save(@RequestBody Apprenant apprenant) {
+    public Apprenant save(@RequestBody Apprenant apprenant) throws Exception {
         return apprenantService.save(apprenant);
     }
 }

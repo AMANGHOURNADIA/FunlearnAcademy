@@ -7,6 +7,8 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface FormateurDao extends JpaRepository<Formateur,Long> {
     Formateur findByRef(String ref);
+    Formateur findByUsername(String username);
+    Formateur findByEmail(String email);
     int deleteByRef(String ref);
 
 }

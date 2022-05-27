@@ -1,5 +1,6 @@
 package com.example.funlearnacademy.service;
 
+import com.example.funlearnacademy.bean.CategorieItem;
 import com.example.funlearnacademy.bean.Sujet;
 import com.example.funlearnacademy.dao.SujetDao;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,5 +27,9 @@ public class SujetService {
 
     public Sujet save(Sujet sujet) {
         return sujetDao.save(sujet);
+    }
+
+    public List<Sujet> findByCategorieItemId(Long id) {
+        return sujetDao.findByCategorieItemId(id);
     }
 }

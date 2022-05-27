@@ -30,4 +30,5 @@ public class CategorieService {
     public Categorie save(Categorie categorie) {
         return categorieDao.save(categorie);
     }
+
 }

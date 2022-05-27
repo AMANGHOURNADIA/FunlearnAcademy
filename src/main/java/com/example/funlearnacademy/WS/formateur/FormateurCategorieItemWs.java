@@ -29,7 +29,7 @@ public class FormateurCategorieItemWs {
         return categorieItemService.findAll();
     }
     @PostMapping("/")
-    public CategorieItem save(@RequestBody CategorieItem categorieItem) {
+    public CategorieItem save(@RequestBody CategorieItem categorieItem)  throws Exception {
         return categorieItemService.save(categorieItem);
     }
 }

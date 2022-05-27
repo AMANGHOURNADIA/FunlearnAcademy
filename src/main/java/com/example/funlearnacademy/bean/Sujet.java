@@ -1,5 +1,7 @@
 package com.example.funlearnacademy.bean;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import javax.persistence.*;
 import java.util.List;
 
@@ -12,6 +14,17 @@ public class Sujet {
     private String description;
     @ManyToOne
     private CategorieItem categorieItem;
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
+    @OneToMany(mappedBy = "sujet", cascade = CascadeType.ALL)
+    private List<Cours> cours;
+
+    public List<Cours> getCours() {
+        return cours;
+    }
+
+    public void setCours(List<Cours> cours) {
+        this.cours = cours;
+    }
 
     public Long getId() {
         return id;

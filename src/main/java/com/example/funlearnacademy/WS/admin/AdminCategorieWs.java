@@ -33,4 +33,8 @@ public class AdminCategorieWs {
     public Categorie save(@RequestBody Categorie categorie) {
         return categorieService.save(categorie);
     }
+    @PutMapping("/")
+    public Categorie update(@RequestBody Categorie categorie){
+      return  categorieService.save(categorie);
+    }
 }

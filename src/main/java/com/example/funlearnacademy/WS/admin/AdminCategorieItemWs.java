@@ -31,7 +31,12 @@ public class AdminCategorieItemWs {
     }
 
     @PostMapping("/")
-    public CategorieItem save(@RequestBody CategorieItem categorieItem) {
+    public CategorieItem save(@RequestBody CategorieItem categorieItem)  throws Exception {
         return categorieItemService.save(categorieItem);
+    }
+
+    @GetMapping("/categorie/id/{id}")
+    public List<CategorieItem> findByCategorieId(@PathVariable Long id) {
+        return categorieItemService.findByCategorieId(id);
     }
 }

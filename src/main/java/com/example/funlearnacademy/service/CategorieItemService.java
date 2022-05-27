@@ -1,5 +1,6 @@
 package com.example.funlearnacademy.service;
 
+import com.example.funlearnacademy.bean.Categorie;
 import com.example.funlearnacademy.bean.CategorieItem;
 import com.example.funlearnacademy.dao.CategorieItemDao;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,20 +14,33 @@ import java.util.Optional;
 public class CategorieItemService {
     @Autowired
     private CategorieItemDao categorieItemDao;
+    @Autowired
+    private CategorieService categorieService;
 
-    public Optional<CategorieItem> findById( Long id) {
+    public Optional<CategorieItem> findById(Long id) {
         return categorieItemDao.findById(id);
     }
+
     @Transactional
-    public void deleteById( Long id) {
+    public void deleteById(Long id) {
         categorieItemDao.deleteById(id);
     }
+
     public List<CategorieItem> findAll() {
         return categorieItemDao.findAll();
     }
 
-    public  CategorieItem save( CategorieItem categorieItem) {
+    public CategorieItem save(CategorieItem categorieItem) throws Exception {
+        Optional<Categorie> categorie = this.categorieService.findById(categorieItem.getCategorie().getId());
+        if (!categorie.isPresent()) {
+            throw new Exception("Category not found !");
+        }
+        categorieItem.setCategorie(categorie.get());
         return categorieItemDao.save(categorieItem);
+    }
+
+    public List<CategorieItem> findByCategorieId(Long id) {
+        return categorieItemDao.findByCategorieId(id);
     }
 }
 

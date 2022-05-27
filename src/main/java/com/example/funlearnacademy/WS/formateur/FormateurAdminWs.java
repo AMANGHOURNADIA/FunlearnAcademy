@@ -29,7 +29,7 @@ public class FormateurAdminWs {
     }
 
     @PostMapping("/")
-    public Admin save(@RequestBody Admin admin) {
+    public Admin save(@RequestBody Admin admin) throws Exception {
         return adminService.save(admin);
     }
 }

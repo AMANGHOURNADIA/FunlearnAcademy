@@ -31,7 +31,7 @@ public class ApprenantCategorieItemWs {
     }
 
     @PostMapping("/")
-    public CategorieItem save(@RequestBody CategorieItem categorieItem) {
+    public CategorieItem save(@RequestBody CategorieItem categorieItem)  throws Exception {
         return categorieItemService.save(categorieItem);
     }
 }

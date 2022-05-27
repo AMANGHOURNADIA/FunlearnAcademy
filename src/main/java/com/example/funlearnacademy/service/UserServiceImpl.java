@@ -5,6 +5,7 @@ import com.example.funlearnacademy.bean.User;
 import com.example.funlearnacademy.dao.UserDao;
 import com.example.funlearnacademy.exception.NotAnImageFileException;
 import com.example.funlearnacademy.filter.JwtConstant;
+import com.example.funlearnacademy.filter.RoleConstant;
 import com.example.funlearnacademy.service.facade.RoleService;
 import com.example.funlearnacademy.service.facade.UserService;
 import com.example.funlearnacademy.util.JwtUtil;
@@ -99,6 +100,7 @@ public class UserServiceImpl implements UserService {
         return null;
     }
 
+    @Override
     public User findByEmail(String email) throws Exception {
         User user = userDao.findByEmail(email);
         if (user != null) {

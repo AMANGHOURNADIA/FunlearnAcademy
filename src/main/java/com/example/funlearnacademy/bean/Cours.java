@@ -19,6 +19,14 @@ public class Cours {
     public Cours() {
     }
 
+    public Sujet getSujet() {
+        return sujet;
+    }
+
+    public void setSujet(Sujet sujet) {
+        this.sujet = sujet;
+    }
+
     public Cours(Long id, String name, String description, Double price) {
         this.id = id;
         this.name = name;

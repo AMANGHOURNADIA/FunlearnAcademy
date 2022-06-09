@@ -10,5 +10,4 @@ import java.util.List;
 public interface ReclamationDao extends JpaRepository<Reclamation,Long> {
     Reclamation findReclamationById(Long id);
     List<Reclamation> findReclamationByUserId(Long id);
-    Reclamation findReclamationByIdAndUserId(Long id);
 }

@@ -10,6 +10,5 @@ import java.util.List;
 public interface ChapitreDao  extends JpaRepository<Chapitre, Long> {
     List<Chapitre> findBySectionIdOrderByNumeroOrder(Long id);
     List<Chapitre> findBySectionId(Long id);
-    void deleteById(Long id);
 
 }

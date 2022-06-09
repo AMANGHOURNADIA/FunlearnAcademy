@@ -8,6 +8,4 @@ import java.util.Optional;
 
 @Repository
 public interface CoursDao extends JpaRepository<Cours, Long> {
-    Optional<Cours> findById(Long id);
-    void deleteById(Long id);
 }

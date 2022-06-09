@@ -21,7 +21,7 @@ public class ReclamationService {
     }
 
     public Reclamation findReclamationByIdAndUserId(Long id) {
-        return reclamationDao.findReclamationByIdAndUserId(id);
+        return reclamationDao.findReclamationById(id);
     }
 
     public List<Reclamation> findAll() {

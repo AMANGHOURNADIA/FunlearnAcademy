@@ -14,15 +14,15 @@ public class FormateurQuestionWs {
     @Autowired
     private QuestionService questionService;
     @PostMapping("add/{id}")
-    public Question addQuestion(@RequestBody Question question, @PathVariable Long id) {
-        return questionService.addQuestion(question, id);
+    public Question addQuestion(@RequestBody Question question) throws Exception {
+        return questionService.save(question);
     }
-    @GetMapping("get/{id}")
-    public List<Question> getQuestions(@PathVariable Long id) {
-        return questionService.getQuestions(id);
+    @GetMapping("/")
+    public List<Question> getQuestions() {
+        return questionService.getQuestions();
     }
     @PostMapping("/")
-    public Question save(@RequestBody Question question) {
+    public Question save(@RequestBody Question question) throws Exception {
         return questionService.save(question);
     }
 }

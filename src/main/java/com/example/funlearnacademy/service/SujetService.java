@@ -8,15 +8,18 @@ import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 import java.util.List;
+import java.util.Optional;
+
 @Service
 public class SujetService {
     @Autowired
     private SujetDao sujetDao;
 
-    public Sujet findByid(Long id) {
-        return sujetDao.findByid(id);
+    public Optional<Sujet> findById(Long aLong) { // virification objet if exist mathtihach f controller
+        return sujetDao.findById(aLong);
     }
-  @Transactional
+
+    @Transactional
     public void deleteById(Long id) {
         sujetDao.deleteById(id);
     }
@@ -31,5 +34,9 @@ public class SujetService {
 
     public List<Sujet> findByCategorieItemId(Long id) {
         return sujetDao.findByCategorieItemId(id);
+    }
+
+    public Sujet findByid(Long id) { // get object by id htiha f controller
+        return sujetDao.findSujetById(id);
     }
 }

@@ -29,10 +29,6 @@ public class AdminHistoryWs {
     public List<History> getHistories() {
         return historyService.getHistories();
     }
-   @PutMapping("edit/{username}")
-    public History editHistory(@RequestBody History history,@PathVariable String username) {
-        return historyService.editHistory(history, username);
-    }
     @PostMapping("/")
     public History save(@RequestBody History history) {
         return historyService.save(history);

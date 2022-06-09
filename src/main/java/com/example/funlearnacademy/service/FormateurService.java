@@ -18,6 +18,7 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import javax.transaction.Transactional;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
 
 import static com.example.funlearnacademy.filter.RoleConstant.ROLE_ADMIN;
 import static com.example.funlearnacademy.filter.RoleConstant.ROLE_FROMATEUR;
@@ -64,6 +65,10 @@ public class FormateurService {
         roleService.save(formateur.getAuthorities());
         return formateurDao.save(formateur);
 
+    }
+
+    public Optional<Formateur> findById(Long aLong) {
+        return formateurDao.findById(aLong);
     }
 
     private String getTemporaryProfileImageUrl(String username) {

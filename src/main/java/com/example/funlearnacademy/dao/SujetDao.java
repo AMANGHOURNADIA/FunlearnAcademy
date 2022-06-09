@@ -10,8 +10,7 @@ import java.util.List;
 
 @Repository
 public interface SujetDao extends JpaRepository<Sujet, Long> {
-    Sujet findByid(Long id);
+    Sujet findSujetById(Long id);
     List<Sujet> findByCategorieItemId(Long id);
-    void deleteById(Long id);
 
 }

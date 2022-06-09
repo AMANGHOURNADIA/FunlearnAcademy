@@ -8,9 +8,6 @@ import java.util.List;
 
 @Repository
 public interface LevelDao extends JpaRepository<Level, Long> {
-    Level addLevel(Level levelDto, Long id);
 
-    List<Level> getLevels(Long id);
-
-    Level getLevel(Long id);
+    Level findLevelById(Long id);
 }

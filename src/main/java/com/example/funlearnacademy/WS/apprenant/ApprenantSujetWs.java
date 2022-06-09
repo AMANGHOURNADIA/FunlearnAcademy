@@ -13,10 +13,6 @@ import java.util.List;
 public class ApprenantSujetWs {
     @Autowired
     private SujetService sujetService;
-    @GetMapping("/id/{id}")
-    public Sujet findByid(@PathVariable Long id) {
-        return sujetService.findByid(id);
-    }
 
     @DeleteMapping("/id/{id}")
     public void deleteById(@PathVariable Long id) {

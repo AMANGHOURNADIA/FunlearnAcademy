@@ -13,9 +13,9 @@ import java.util.List;
 public class AdminLevelWs {
     @Autowired
     private LevelService levelService;
-   @PostMapping("/leve/{id}")
-    public Level addLevel(@RequestBody Level level,@PathVariable Long id) {
-        return levelService.addLevel(level, id);
+    @PostMapping("/leve/{id}")
+    public Level addLevel(@RequestBody Level level) {
+        return levelService.save(level);
     }
    @GetMapping("/id/{id}")
     public List<Level> getLevels(@PathVariable Long id) {

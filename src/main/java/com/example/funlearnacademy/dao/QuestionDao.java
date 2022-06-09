@@ -9,7 +9,5 @@ import java.util.List;
 
 @Repository
 public interface QuestionDao extends JpaRepository<Question, Long> {
-    Question addQuestion(Question question, Long id);
 
-    List<Question> getQuestions(Long idLevel);
 }

@@ -1,5 +1,7 @@
 package com.example.funlearnacademy.bean;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import javax.persistence.*;
 import java.util.List;
 
@@ -12,7 +14,8 @@ public class Level {
 
     private String difficulty;
 
-    @OneToMany
+    @OneToMany(mappedBy = "level", cascade = CascadeType.ALL)
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private List<Question> questions;
 
     @ManyToOne

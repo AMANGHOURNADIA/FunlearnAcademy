@@ -21,16 +21,14 @@ public class HistoryService {
     }
 
     public History addHistory(History historyDto) {
-        return historyDao.addHistory(historyDto);
+        return historyDao.save(historyDto);
     }
 
     public List<History> getHistories() {
-        return historyDao.getHistories();
+        return historyDao.findAll();
     }
 
-    public History editHistory(History history, String username) {
-        return historyDao.editHistory(history, username);
-    }
+
 
     public History save(History history) {
         return historyDao.save(history);

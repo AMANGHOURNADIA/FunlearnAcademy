@@ -8,13 +8,7 @@ import java.util.List;
 
 @Repository
 public interface HistoryDao extends JpaRepository<History, Long> {
-    History addHistory(History historyDto);
-
-    List<History> getHistories();
-
     History findHistoryByScore(int score);
-
     History findHistoryByUsername(String username);
 
-    History editHistory(History history, String username);
 }

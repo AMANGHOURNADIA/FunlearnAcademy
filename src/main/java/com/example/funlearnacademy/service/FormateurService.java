@@ -67,6 +67,10 @@ public class FormateurService {
 
     }
 
+    public Formateur update(Formateur formateur) {
+        return formateurDao.save(formateur);
+    }
+
     public Optional<Formateur> findById(Long aLong) {
         return formateurDao.findById(aLong);
     }
@@ -90,5 +94,8 @@ public class FormateurService {
         }
     }
 
-
+    @Transactional
+    public void deleteById(Long aLong) {
+        formateurDao.deleteById(aLong);
+    }
 }

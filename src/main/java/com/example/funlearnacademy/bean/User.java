@@ -16,6 +16,7 @@ public class User implements UserDetails {
     protected  String fullname;
     protected  String username;
     protected  String password;
+    protected  String phone;
     @ManyToMany(fetch = EAGER)
     protected Collection<Role> authorities;
     protected String role;
@@ -139,5 +140,13 @@ public class User implements UserDetails {
 
     public void setToken(String token) {
         this.token = token;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
     }
 }

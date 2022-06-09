@@ -16,16 +16,16 @@ public class Level {
     private List<Question> questions;
 
     @ManyToOne
-    private Theme theme;
+    private Cours cours;
 
 
     public Level() {
     }
 
-    public Level(String difficulty, List<Question> questions, Theme theme) {
+    public Level(String difficulty, List<Question> questions,Cours cours ) {
         this.difficulty = difficulty;
         this.questions = questions;
-        this.theme = theme;
+        this.cours = cours;
     }
 
     public Long getId() {
@@ -52,11 +52,11 @@ public class Level {
         this.questions = questions;
     }
 
-    public Theme getTheme() {
-        return theme;
+    public Cours getCours() {
+        return cours;
     }
 
-    public void setTheme(Theme theme) {
-        this.theme = theme;
+    public void setTheme(Cours cours) {
+        this.cours = cours;
     }
 }

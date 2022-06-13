@@ -31,7 +31,7 @@ public class AdminUserWs
         System.out.println(user.getUsername());
         return userService.signIn(user);
     }
-
+// mafhamtx 3lach kay3tina error !!1tana bb wach ^
     @PostMapping("/update")
     public User updateUser(@RequestBody User user) {
         System.out.println(user.getId());

@@ -1,6 +1,7 @@
 package com.example.funlearnacademy.WS.admin;
 
 import com.example.funlearnacademy.bean.Apprenant;
+import com.example.funlearnacademy.bean.Formateur;
 import com.example.funlearnacademy.service.ApprenantService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -22,6 +23,11 @@ public class AdminApprenantWs {
     public int deleteByReference(@PathVariable String reference) {
         return apprenantService.deleteByReference(reference);
     }
+    @PostMapping("/update")
+    public Apprenant update(@RequestBody Apprenant apprenant) {
+        return apprenantService.update(apprenant);
+    }
+
 
     @GetMapping("/")
     public List<Apprenant> findAll() {

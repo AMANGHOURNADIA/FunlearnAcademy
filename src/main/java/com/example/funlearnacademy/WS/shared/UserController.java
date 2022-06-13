@@ -50,4 +50,11 @@ public class UserController {
     public byte[] getProfileImage(@PathVariable("username") String username, @PathVariable("fileName") String fileName) throws IOException {
         return Files.readAllBytes(Paths.get(USER_FOLDER + username + FORWARD_SLASH + fileName));
     }
+
+    @PostMapping("/login")
+    public ResponseEntity<User> signIn(@RequestBody User user) {
+        System.out.println(user.getPassword());
+        System.out.println(user.getUsername());
+        return userService.signIn(user);
+    }
 }

@@ -18,7 +18,10 @@ public class FormateurApprenantWs {
     public Apprenant findByReference(@PathVariable String reference) {
         return apprenantService.findByReference(reference);
     }
-
+    @PostMapping("/update")
+    public Apprenant update(@RequestBody Apprenant apprenant) {
+        return apprenantService.update(apprenant);
+    }
     @DeleteMapping("/reference/{reference}")
     public int deleteByReference(@PathVariable String reference) {
         return apprenantService.deleteByReference(reference);

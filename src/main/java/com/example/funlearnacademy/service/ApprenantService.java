@@ -1,9 +1,6 @@
 package com.example.funlearnacademy.service;
 
-import com.example.funlearnacademy.bean.Admin;
-import com.example.funlearnacademy.bean.Apprenant;
-import com.example.funlearnacademy.bean.Role;
-import com.example.funlearnacademy.bean.User;
+import com.example.funlearnacademy.bean.*;
 import com.example.funlearnacademy.dao.ApprenantDao;
 import com.example.funlearnacademy.dao.UserDao;
 import com.example.funlearnacademy.filter.JwtConstant;
@@ -34,6 +31,9 @@ public class ApprenantService {
     @Autowired
     private PasswordEncoder passwordEncoder;
 
+    public Apprenant update(Apprenant apprenant) {
+        return apprenantDao.save(apprenant);
+    }
     public Apprenant findByReference(String reference) {
         return apprenantDao.findByReference(reference);
     }

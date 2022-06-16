@@ -46,4 +46,8 @@ public class CoursService {
         cours.setSujet(sujet.get());
         return coursDao.save(cours);
     }
+
+    public List<Cours> findByFormateurId(Long id) {
+        return coursDao.findByFormateurId(id);
+    }
 }

@@ -30,4 +30,9 @@ public class FormateurCoursWs {
     public Cours save(@RequestBody Cours cours) throws Exception {
         return coursService.save(cours);
     }
+
+    @GetMapping("/fourmateur/id/{id}")
+    public List<Cours> findByFormateurId(@PathVariable Long id) {
+        return coursService.findByFormateurId(id);
+    }
 }

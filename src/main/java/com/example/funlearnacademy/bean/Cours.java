@@ -9,6 +9,7 @@ public class Cours {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String name;
+    @Column(length = 1000000)
     private String description;
     private Double price;
     @ManyToOne

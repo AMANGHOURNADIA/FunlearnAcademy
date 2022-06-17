@@ -34,6 +34,10 @@ public class AdminSectionWs {
     public List<Section> findAll() {
         return sectionService.findAll();
     }
+  @PostMapping("/")
+    public Section update(@RequestBody Section section) {
+        return sectionService.update(section);
+    }
 
     @PostMapping("/")
     public Section save(@RequestBody Section section) {

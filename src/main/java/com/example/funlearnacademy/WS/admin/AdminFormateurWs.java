@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.transaction.Transactional;
 import java.util.List;
+import java.util.Optional;
 
 
 @RestController
@@ -39,10 +40,14 @@ public class AdminFormateurWs {
     public int deleteByRef(@PathVariable String ref) {
         return formateurService.deleteByRef(ref);
     }
-
+    @GetMapping("/along/{along}")
+    public Optional<Formateur> findById(Long aLong) {
+        return formateurService.findById(aLong);
+    }
 
     @DeleteMapping("/id/{aLong}")
     public void deleteById(@PathVariable Long aLong) {
         formateurService.deleteById(aLong);
     }
+
 }

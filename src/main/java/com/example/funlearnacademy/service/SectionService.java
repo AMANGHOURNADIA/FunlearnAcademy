@@ -33,4 +33,6 @@ public class SectionService {
     public Section save(Section section) {
         return sectionDao.save(section);
     }
+
+    public Section update(Section section) {return sectionDao.save(section);}
 }

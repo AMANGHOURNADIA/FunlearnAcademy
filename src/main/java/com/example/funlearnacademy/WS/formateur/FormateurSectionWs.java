@@ -33,6 +33,9 @@ public class FormateurSectionWs {
     }
 
     @PostMapping("/")
+    public Section update(@RequestBody Section section) {return sectionService.update(section);}
+
+    @PostMapping("/")
     public Section save(@RequestBody Section section) {
         return sectionService.save(section);
     }

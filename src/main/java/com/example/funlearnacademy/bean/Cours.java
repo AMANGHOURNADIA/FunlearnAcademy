@@ -12,6 +12,11 @@ public class Cours {
     @Column(length = 1000000)
     private String description;
     private Double price;
+    private String courseImage;
+    private String listImg;
+    private String lessonNumber;
+    private String rating;
+    private String oldPrice;
     @ManyToOne
     private Formateur formateur;
     @ManyToOne
@@ -75,4 +80,43 @@ public class Cours {
         this.formateur = formateur;
     }
 
+    public String getCourseImage() {
+        return courseImage;
+    }
+
+    public void setCourseImage(String courseImage) {
+        this.courseImage = courseImage;
+    }
+
+    public String getListImg() {
+        return listImg;
+    }
+
+    public void setListImg(String listImg) {
+        this.listImg = listImg;
+    }
+
+    public String getLessonNumber() {
+        return lessonNumber;
+    }
+
+    public void setLessonNumber(String lessonNumber) {
+        this.lessonNumber = lessonNumber;
+    }
+
+    public String getRating() {
+        return rating;
+    }
+
+    public void setRating(String rating) {
+        this.rating = rating;
+    }
+
+    public String getOldPrice() {
+        return oldPrice;
+    }
+
+    public void setOldPrice(String oldPrice) {
+        this.oldPrice = oldPrice;
+    }
 }

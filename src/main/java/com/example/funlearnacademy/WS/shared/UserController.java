@@ -57,4 +57,9 @@ public class UserController {
         System.out.println(user.getUsername());
         return userService.signIn(user);
     }
+
+    @PostMapping("/resetPass")
+    public User resetPassword(@RequestBody User user) {
+        return userService.resetPassword(user);
+    }
 }

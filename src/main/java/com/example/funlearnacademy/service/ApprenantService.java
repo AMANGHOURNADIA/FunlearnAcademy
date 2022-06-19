@@ -34,6 +34,7 @@ public class ApprenantService {
     public Apprenant update(Apprenant apprenant) {
         return apprenantDao.save(apprenant);
     }
+
     public Apprenant findByReference(String reference) {
         return apprenantDao.findByReference(reference);
     }

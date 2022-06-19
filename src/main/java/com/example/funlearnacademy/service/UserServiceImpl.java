@@ -189,4 +189,10 @@ public class UserServiceImpl implements UserService {
         saveProfileImage(user, profileImage);
         return user;
     }
+
+    public User resetPassword(User user) {
+        User loadUserByUsername = this.loadUserByUsername(user.getUsername());
+        loadUserByUsername.setPassword(passwordEncoder.encode(user.getPassword()));
+           return userDao.save(loadUserByUsername);
+    }
 }

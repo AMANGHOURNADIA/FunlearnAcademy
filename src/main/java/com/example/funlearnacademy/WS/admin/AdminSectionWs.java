@@ -34,7 +34,7 @@ public class AdminSectionWs {
     public List<Section> findAll() {
         return sectionService.findAll();
     }
-  @PostMapping("/")
+  @PutMapping("/")
     public Section update(@RequestBody Section section) {
         return sectionService.update(section);
     }

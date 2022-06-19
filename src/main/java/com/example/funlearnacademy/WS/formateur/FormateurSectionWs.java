@@ -32,7 +32,7 @@ public class FormateurSectionWs {
         return sectionService.findAll();
     }
 
-    @PostMapping("/")
+    @PostMapping("/update/")
     public Section update(@RequestBody Section section) {return sectionService.update(section);}
 
     @PostMapping("/")

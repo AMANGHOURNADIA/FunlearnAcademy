@@ -7,6 +7,7 @@ import com.example.funlearnacademy.dao.QuestionDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.List;
 import java.util.Optional;
 
@@ -14,23 +15,24 @@ import java.util.Optional;
 public class QuestionService {
   @Autowired
     private QuestionDao questionDao;
-  @Autowired
-  private LevelService levelService;
 
-    public Question addQuestion(Question question) {
+
+    public Question save(Question question)  {
+        return questionDao.save(question);
+    }
+    public Question update(Question question)  {
         return questionDao.save(question);
     }
 
-    public List<Question> getQuestions() {
+    public List<Question> findAll() {
         return questionDao.findAll();
     }
 
-    public Question save(Question question) throws Exception {
-        Optional<Level> level = this.levelService.findById(question.getLevel().getId());
-        if (level.isEmpty()){
-            throw new Exception("Level not found");
-        }
-        question.setLevel(level.get());
-        return questionDao.save(question);
+    public Optional<Question> findById(Long id) {
+        return questionDao.findById(id);
+    }
+  @Transactional
+    public void delete(Long id) {
+        questionDao.deleteById(id);
     }
 }

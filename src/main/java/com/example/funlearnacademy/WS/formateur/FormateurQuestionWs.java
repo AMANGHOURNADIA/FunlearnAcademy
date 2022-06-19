@@ -7,22 +7,31 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @Controller
 @RequestMapping("formateur/question")
 public class FormateurQuestionWs {
     @Autowired
     private QuestionService questionService;
-    @PostMapping("add/{id}")
-    public Question addQuestion(@RequestBody Question question) throws Exception {
+    @PostMapping("/")
+    public Question save(@RequestBody Question question)  {
+        return questionService.save(question);
+    }
+    @PostMapping("/update/")
+    public Question update(@RequestBody Question question)  {
         return questionService.save(question);
     }
     @GetMapping("/")
-    public List<Question> getQuestions() {
-        return questionService.getQuestions();
+    public List<Question> findAll() {
+        return questionService.findAll();
     }
-    @PostMapping("/")
-    public Question save(@RequestBody Question question) throws Exception {
-        return questionService.save(question);
+    @GetMapping("/id/{id}")
+    public Optional<Question> findById(Long id) {
+        return questionService.findById(id);
+    }
+    @DeleteMapping("/question/")
+    public void delete(Long id) {
+        questionService.delete(id);
     }
 }

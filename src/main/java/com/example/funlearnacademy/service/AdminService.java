@@ -37,9 +37,14 @@ public class AdminService {
         return adminDao.deleteByEmail(email);
     }
 
+    public Admin update(Admin admin) {
+        return adminDao.save(admin);
+    }
+
     public List<Admin> findAll() {
         return adminDao.findAll();
     }
+
 
     public Admin findAdminById(Long id) {
         return adminDao.findAdminById(id);

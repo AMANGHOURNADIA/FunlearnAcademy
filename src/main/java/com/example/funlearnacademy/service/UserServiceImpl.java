@@ -54,9 +54,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public ResponseEntity<User> signIn(User user) {
         try {
-            authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(
-                    user.getUsername(), user.getPassword()
-            ));
+            authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(user.getUsername(), user.getPassword()));
         } catch (BadCredentialsException e) {
             throw new BadCredentialsException("bad credited for username " + user.getUsername());
         }
@@ -67,9 +65,7 @@ public class UserServiceImpl implements UserService {
         HttpHeaders jwtHeader = new HttpHeaders();
         jwtHeader.clearContentHeaders();
         jwtHeader.set(JwtConstant.JWT_TOKEN_HEADER, jwt);
-        return ResponseEntity.ok()
-                .headers(jwtHeader)
-                .body(loadUserByUsername);
+        return ResponseEntity.ok().headers(jwtHeader).body(loadUserByUsername);
     }
 
     private HttpHeaders getJwtHeader(User user) {
@@ -109,6 +105,7 @@ public class UserServiceImpl implements UserService {
         return user;
     }
 
+
     @Override
     public User save(User user) throws Exception {
         System.out.println(user.getUsername());
@@ -116,10 +113,9 @@ public class UserServiceImpl implements UserService {
         user.setAuthorities(Arrays.asList(new Role(ROLE_ADMIN)));
         user.setRole(ROLE_ADMIN);
         System.out.println(user.getRole());
-        User loadedUserByUsername =  userDao.findByUsername(user.getUsername());
+        User loadedUserByUsername = userDao.findByUsername(user.getUsername());
         this.findByEmail(user.getEmail());
-        if (loadedUserByUsername != null)
-            throw new Exception("Username already exist !");
+        if (loadedUserByUsername != null) throw new Exception("Username already exist !");
         else {
 //            prepareMessage(user);
             user.setPassword(passwordEncoder.encode(user.getPassword()));
@@ -154,14 +150,12 @@ public class UserServiceImpl implements UserService {
     }
 
     private String setProfileImageUrl(String username) {
-        return ServletUriComponentsBuilder.fromCurrentContextPath().path(JwtConstant.USER_IMAGE_PATH + username +
-                JwtConstant.FORWARD_SLASH + username + JwtConstant.DOT + JwtConstant.JPG_EXTENSION).toUriString();
+        return ServletUriComponentsBuilder.fromCurrentContextPath().path(JwtConstant.USER_IMAGE_PATH + username + JwtConstant.FORWARD_SLASH + username + JwtConstant.DOT + JwtConstant.JPG_EXTENSION).toUriString();
     }
 
 
     private String getTemporaryProfileImageUrl(String username) {
-        return ServletUriComponentsBuilder.fromCurrentContextPath().path(JwtConstant.DEFAULT_USER_IMAGE_PATH + username)
-                .toUriString();
+        return ServletUriComponentsBuilder.fromCurrentContextPath().path(JwtConstant.DEFAULT_USER_IMAGE_PATH + username).toUriString();
     }
 
     private void saveProfileImage(User user, MultipartFile profileImage) throws IOException, NotAnImageFileException {
@@ -193,6 +187,21 @@ public class UserServiceImpl implements UserService {
     public User resetPassword(User user) {
         User loadUserByUsername = this.loadUserByUsername(user.getUsername());
         loadUserByUsername.setPassword(passwordEncoder.encode(user.getPassword()));
-           return userDao.save(loadUserByUsername);
+        return userDao.save(loadUserByUsername);
+    }
+
+    public void forgetPassword(String email) throws Exception {
+        User loadUserByUsername = this.findUserByEmail(email);
+        String password = this.generatePassword();
+        System.out.println(password);
+        loadUserByUsername.setPassword(passwordEncoder.encode(password));
+        userDao.save(loadUserByUsername);
+    }
+    public User findUserByEmail(String email) throws Exception {
+        User user = userDao.findByEmail(email);
+        if (user == null) {
+            throw new Exception("Email doesn't  exist !");
+        }
+        return user;
     }
 }

@@ -38,6 +38,10 @@ public class UserController {
         }
         return byteArrayOutputStream.toByteArray();
     }
+  @GetMapping("/resetpassword/{email}")
+    public void forgetPassword(@PathVariable String email) throws Exception {
+        userService.forgetPassword(email);
+    }
 
     @PostMapping("/updateProfileImage")
     public ResponseEntity<User> updateProfileImage(@RequestParam("username") String username, @RequestParam(value = "profileImage") MultipartFile profileImage)

@@ -32,4 +32,8 @@ public class AdminAdminWs {
     public Admin save(@RequestBody Admin admin) throws Exception {
         return adminService.save(admin);
     }
+    @PostMapping("/update")
+    public Admin update(@RequestBody Admin admin) throws Exception {
+        return adminService.update(admin);
+    }
 }

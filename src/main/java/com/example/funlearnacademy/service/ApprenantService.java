@@ -14,6 +14,7 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import javax.transaction.Transactional;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
 
 import static com.example.funlearnacademy.filter.RoleConstant.ROLE_ADMIN;
 import static com.example.funlearnacademy.filter.RoleConstant.ROLE_APPRENANT;
@@ -79,5 +80,9 @@ public class ApprenantService {
         if (apprenant != null) {
             throw new Exception("Username already exist");
         }
+    }
+
+    public Optional<Apprenant> findById(Long id) {
+        return apprenantDao.findById(id);
     }
 }

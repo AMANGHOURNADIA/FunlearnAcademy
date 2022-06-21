@@ -59,7 +59,7 @@ public class FormateurInscriptionWs {
     }
 
     @PostMapping("/")
-    public Inscription save(@RequestBody Inscription inscription) {
+    public Inscription save(@RequestBody Inscription inscription) throws Exception {
         return inscriptionService.save(inscription);
     }
 }

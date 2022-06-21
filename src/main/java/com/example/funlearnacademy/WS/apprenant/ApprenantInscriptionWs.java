@@ -18,10 +18,6 @@ public class ApprenantInscriptionWs {
         return inscriptionService.findByNumber(number);
     }
 
-    @GetMapping("/apprenant/id/{id}")
-    public Inscription findInscriptionByApprenantId(@PathVariable Long id) {
-        return inscriptionService.findInscriptionByApprenantId(id);
-    }
 
     @DeleteMapping("/number/{number}")
     public int deleteByNumber(@PathVariable Integer number) {
@@ -59,7 +55,11 @@ public class ApprenantInscriptionWs {
     }
 
     @PostMapping("/")
-    public Inscription save(@RequestBody Inscription inscription) {
+    public Inscription save(@RequestBody Inscription inscription) throws Exception {
         return inscriptionService.save(inscription);
+    }
+    @GetMapping("/apprenant/id/{id}")
+    public List<Inscription> findByApprenantId(@PathVariable Long id) {
+        return inscriptionService.findByApprenantId(id);
     }
 }

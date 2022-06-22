@@ -53,13 +53,16 @@ public class FormateurService {
 
     public Formateur save(Formateur formateur) throws Exception {
         System.out.println(formateur.getUsername());
-        System.out.println(formateur.getPassword());
         formateur.setAuthorities(Arrays.asList(new Role(ROLE_FROMATEUR)));
         formateur.setRole(ROLE_FROMATEUR);
         System.out.println(formateur.getRole());
         this.findByEmail(formateur.getEmail());
         this.findByUsername(formateur.getUsername());
 //            prepareMessage(user);
+        if (formateur.getPassword() == null){
+            formateur.setPassword(this.userService.generatePassword());
+        }
+        System.out.println(formateur.getPassword());
         formateur.setPassword(passwordEncoder.encode(formateur.getPassword()));
         formateur.setImage(getTemporaryProfileImageUrl(formateur.getUsername()));
         roleService.save(formateur.getAuthorities());

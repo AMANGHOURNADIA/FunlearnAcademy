@@ -1,5 +1,6 @@
 package com.example.funlearnacademy.bean;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 
 
@@ -9,6 +10,16 @@ public class Formateur extends User{
     private Long  bankaccount ;
     private String grade;
     private String specialite;
+    @Column(length = 1000000)
+    private String about;
+
+    public String getAbout() {
+        return about;
+    }
+
+    public void setAbout(String about) {
+        this.about = about;
+    }
 
     public String getRef() {
         return ref;

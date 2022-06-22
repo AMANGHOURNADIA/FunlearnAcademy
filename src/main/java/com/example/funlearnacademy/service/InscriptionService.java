@@ -1,5 +1,7 @@
 package com.example.funlearnacademy.service;
 
+import com.example.funlearnacademy.bean.Apprenant;
+import com.example.funlearnacademy.bean.Cours;
 import com.example.funlearnacademy.bean.Inscription;
 import com.example.funlearnacademy.dao.InscriptionDao;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,11 +9,18 @@ import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class InscriptionService {
     @Autowired
     private InscriptionDao inscriptionDao;
+    @Autowired
+    private ApprenantService apprenantService;
+    @Autowired
+    private CoursService coursService;
+
+
 
     public Inscription findByNumber(Integer number) {
         return inscriptionDao.findByNumber(number);
@@ -57,7 +66,21 @@ public class InscriptionService {
         return inscriptionDao.findAll();
     }
 
-    public <S extends Inscription> S save(S entity) {
+    public Inscription save(Inscription entity) throws Exception {
+        Optional<Apprenant> apprenant = this.apprenantService.findById(entity.getApprenant().getId());
+        Optional<Cours> cours = this.coursService.findById(entity.getCours().getId());
+        if (apprenant.isEmpty()){
+            throw new Exception("Account not found !");
+        }
+        if (cours.isEmpty()){
+            throw new Exception("Course not found !");
+        }
+        entity.setApprenant(apprenant.get());
+        entity.setCours(cours.get());
         return inscriptionDao.save(entity);
+    }
+
+    public List<Inscription> findByApprenantId(Long id) {
+        return inscriptionDao.findByApprenantId(id);
     }
 }

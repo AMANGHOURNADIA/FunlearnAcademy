@@ -5,7 +5,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface ApprenantDao extends JpaRepository<Apprenant,String> {
+public interface ApprenantDao extends JpaRepository<Apprenant,Long> {
     Apprenant findByReference(String reference);
     Apprenant findByUsername(String username);
     Apprenant findByEmail(String email);
